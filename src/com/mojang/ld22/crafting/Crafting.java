@@ -9,6 +9,7 @@ import com.mojang.ld22.entity.Furnace;
 import com.mojang.ld22.entity.Oven;
 import com.mojang.ld22.entity.Lantern;
 import com.mojang.ld22.entity.Workbench;
+import com.mojang.ld22.item.ToolRangedType;
 import com.mojang.ld22.item.ToolType;
 import com.mojang.ld22.item.resource.Resource;
 
@@ -38,7 +39,8 @@ public class Crafting {
 			workbenchRecipes.add(new ToolRecipe(ToolType.hoe, 1).addCost(Resource.wood, 5).addCost(Resource.stone, 5));
 			workbenchRecipes.add(new ToolRecipe(ToolType.pickaxe, 1).addCost(Resource.wood, 5).addCost(Resource.stone, 5));
 			workbenchRecipes.add(new ToolRecipe(ToolType.shovel, 1).addCost(Resource.wood, 5).addCost(Resource.stone, 5));
-
+                        workbenchRecipes.add(new ToolRecipe(ToolRangedType.bow, 0).addCost(Resource.wood, 7));
+                        
 			anvilRecipes.add(new ToolRecipe(ToolType.sword, 2).addCost(Resource.wood, 5).addCost(Resource.ironIngot, 5));
 			anvilRecipes.add(new ToolRecipe(ToolType.axe, 2).addCost(Resource.wood, 5).addCost(Resource.ironIngot, 5));
 			anvilRecipes.add(new ToolRecipe(ToolType.hoe, 2).addCost(Resource.wood, 5).addCost(Resource.ironIngot, 5));

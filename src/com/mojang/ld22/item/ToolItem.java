@@ -31,7 +31,7 @@ public class ToolItem extends Item {
 		this.type = type;
 		this.level = level;
 	}
-
+        
 	public int getColor() {
 		return LEVEL_COLORS[level];
 	}

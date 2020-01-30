@@ -10,7 +10,7 @@ public class ToolType {
 	public final String name;
 	public final int sprite;
 
-	private ToolType(String name, int sprite) {
+	protected ToolType(String name, int sprite) {
 		this.name = name;
 		this.sprite = sprite;
 	}

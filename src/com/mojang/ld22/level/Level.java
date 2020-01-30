@@ -17,6 +17,7 @@ import com.mojang.ld22.level.levelgen.LevelGen;
 import com.mojang.ld22.level.tile.Tile;
 
 public class Level {
+    
 	private Random random = new Random();
 
 	public int w, h;
