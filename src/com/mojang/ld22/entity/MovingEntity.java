@@ -15,16 +15,18 @@ public class MovingEntity extends Entity {
 
     private int lifeTime;
     private int dir;
+    private int dmg;
     private int xt;
     private int yt;
     public double xa, ya;
     public double xx, yy;
     private Mob owner;
 
-    public MovingEntity(Mob owner, double xa, double ya, int xt, int yt, Level level) {
+    public MovingEntity(Mob owner, double xa, double ya, int xt, int yt, Level level, int dmg) {
         this.dir = owner.dir;
         this.level = level;
         this.owner = owner;
+        this.dmg = dmg;
         lifeTime = 300;
         this.xt = xt;
         this.yt = yt;
@@ -51,7 +53,7 @@ public class MovingEntity extends Entity {
         for (int i = 0; i < toHit.size(); i++) {
             Entity e = toHit.get(i);
             if (e instanceof Mob && !e.equals(owner)) {
-                e.hurt(owner, 1, ((Mob) e).dir ^ 1);
+                e.hurt(owner, dmg, ((Mob) e).dir ^ 1);
                 lifeTime = 0;
             }
         }

@@ -30,7 +30,7 @@ public class Player extends Mob {
     public int staminaRecharge;
     public int staminaRechargeDelay;
     public int score;
-    public int maxStamina = 1000;
+    public int maxStamina = 10;
     private int onStairDelay;
     public int invulnerableTime = 0;
 
@@ -287,8 +287,9 @@ public class Player extends Mob {
                     if (weapon.type instanceof ToolRangedType) {
                         ToolRangedType rangeItem = (ToolRangedType)weapon.type;
                         
-                        payStamina(5);
-                        rangeItem.attack(this, dir, level);
+                        if(payStamina(5)){
+                            rangeItem.attack(this, dir, level);
+                        }
                     } 
                     else {
                         level.getTile(xt, yt).hurt(level, xt, yt, this, random.nextInt(3) + 1, attackDir);

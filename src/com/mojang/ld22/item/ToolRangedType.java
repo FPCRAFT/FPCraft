@@ -11,21 +11,23 @@ import com.mojang.ld22.level.Level;
  */
 public class ToolRangedType extends ToolType{
 
-    public static ToolRangedType bow = new ToolRangedType("Bow", 5, 6, 6, 9, 13, 10);
+    public static ToolRangedType bow = new ToolRangedType("Bow", 5, 6, 6, 9, 13, 10, 5);
     
     private int range;
     private int xt;
     private int yt;
+    private int dmg;
     
     private int proyectileXTile;
     private int proyectileYTile;
     
-    public ToolRangedType(String name, int itemSprite, int xt, int yt, int proyectileXTile,int proyectileYTile, int range) {
+    public ToolRangedType(String name, int itemSprite, int xt, int yt, int proyXTile,int proyYTile, int range, int dmg) {
         super(name, itemSprite);
-        this.proyectileXTile = proyectileXTile;
-        this.proyectileYTile = proyectileYTile;
+        this.proyectileXTile = proyXTile;
+        this.proyectileYTile = proyYTile;
         this.xt = xt;
         this.yt = yt;
+        this.dmg = dmg;
         this.range = range;
         
     }
@@ -45,7 +47,7 @@ public class ToolRangedType extends ToolType{
         }
         
         
-        MovingEntity movingEntity = new MovingEntity(itemOwner, x, y, proyectileXTile, proyectileYTile, level);
+        MovingEntity movingEntity = new MovingEntity(itemOwner, x, y, proyectileXTile, proyectileYTile, level, dmg);
         
         movingEntity.level.add(movingEntity);
     }
