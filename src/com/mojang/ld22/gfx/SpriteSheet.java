@@ -2,7 +2,14 @@ package com.mojang.ld22.gfx;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Esta clase sera cambiada a HojaSprites en un futuro
+ * 
+ * @deprecated
+ * @see HojaSprites
+ */
 public class SpriteSheet {
+	
 	public int width, height;
 	public int[] pixels;
 
