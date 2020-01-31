@@ -88,7 +88,6 @@ public class Sprite {
 		for (int Y = 0; Y < SIZE; Y++) {
 			
 			for (int X = 0; X < SIZE; X++) {
-				
 				spritePixels[X + Y * SIZE] = 
 						sheet.getPIXELS_IMAGE()[
 						                        (X + graphicX) + (Y + graphicY) * sheet.getWIDTH()

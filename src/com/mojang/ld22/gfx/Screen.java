@@ -79,18 +79,23 @@ public class Screen {
 		positionY -= yOffset;
 
 		for (int screenY = 0; screenY < sprite.getSIZE(); screenY++) {
-			
+			System.out.println((screenY + positionY) + " y");
 			if ((screenY + positionY) < 0 || (screenY + positionY) >= HEIGHT) continue;
 			
 			for (int screenX = 0; screenX < sprite.getSIZE(); screenX++) {
-				
+				System.out.println((screenX + positionX));
 				if ((screenX + positionX) < 0 || (screenX + positionX) >= WIDTH) continue;
 				
 				// Calculamos la posicion final : 					(screenX + positionX) + (screenY + positionY) * WIDTH
 				// y le agregamos los pixeles del sprite 1 a 1 : 	(screenX + screenY) * sprite.getSIZE()
+				System.out.println("hola");
 				
-				pixels[ (screenX + positionX) + (screenY + positionY) * WIDTH ] = 
-						sprite.getSpritePixels()[ screenX + screenY * sprite.getSIZE() ]; 
+				int pixel = sprite.getSpritePixels()[ screenX + screenY * sprite.getSIZE() ];
+				
+				if(pixel !=  0xff000000) {
+					pixels[ (screenX + positionX) + (screenY + positionY) * WIDTH ] = 
+							sprite.getSpritePixels()[ screenX + screenY * sprite.getSIZE() ];
+				}
 			}
 		}
 	}
