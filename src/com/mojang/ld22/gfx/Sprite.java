@@ -3,7 +3,7 @@ package com.mojang.ld22.gfx;
 /**
  * Se encarga de buscar nuestro sprite a traves de un numero x e y en la HojaSprites
  * 
- * REGLA Nº1 los sprites deven ser totalmente cuadrados, es decir ancho == alto
+ * REGLA Nï¿½1 los sprites deven ser totalmente cuadrados, es decir ancho == alto
  * 
  * @author Jose Antonio Duarte Perez
  * @see HojaSprites
@@ -19,7 +19,7 @@ public class Sprite {
 	/**
 	 * Este constructor devuelve el valor por defecto del sprite de la hojaSprites, NO LO ROTA
 	 * 
-	 * @param size Tamaño del sprite (solor el ancho o el alto)
+	 * @param size Tamaï¿½o del sprite (solor el ancho o el alto)
 	 * @param tileRow Posicion X del sprite en la hoja de sprites
 	 * @param tileColum Posicion Y del sprite en la hoja de sprites
 	 * @param sheet HojaSprites Utilizada
@@ -45,7 +45,7 @@ public class Sprite {
 	 * Se utiliza en caso de querer Rotar el sprite, este constructor 
 	 * devuelve el valor por defecto del sprite de la hojaSprites pero Rotado
 	 * 
-	 * @param size Tamaño del sprite (solor el ancho o el alto)
+	 * @param size Tamaï¿½o del sprite (solor el ancho o el alto)
 	 * @param tileRow Posicion X del sprite en la hoja de sprites
 	 * @param tileColum Posicion Y del sprite en la hoja de sprites
 	 * @param sheet HojaSprites Utilizada
@@ -66,7 +66,7 @@ public class Sprite {
 	}
 	
 	/**
-	 * Devuelve el tamaño del Sprite
+	 * Devuelve el tamaï¿½o del Sprite
 	 * @return int SIZE
 	 */
 	public int getSIZE() {
@@ -102,7 +102,7 @@ public class Sprite {
 	 * 
 	 * Carga el Sprite y Mientras lo rota
 	 * 
-	 * @param rotationVersion entero que indica el º de rotacion {0[0º], 1[90º], 2[180º], 3[270º]}
+	 * @param rotationVersion entero que indica el ï¿½ de rotacion {0[0], 1[90], 2[180], 3[270]}
 	 */
 	private void loadSprite(int rotationVersion) {
 		

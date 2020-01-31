@@ -64,7 +64,7 @@ public class Screen {
 	}
 	
 	/**
-	 * Se Encargara De Dibujar un Sprite en la pantalla, solo si esta dibujado a color, para los que esten en blanco/negro añadir el parametro color al final
+	 * Se Encargara De Dibujar un Sprite en la pantalla, solo si esta dibujado a color, para los que esten en blanco/negro anadir el parametro color al final
 	 * 
 	 * @author Jose Antonio Duarte Perez
 	 * 

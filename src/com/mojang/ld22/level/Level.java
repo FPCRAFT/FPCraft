@@ -8,6 +8,7 @@ import java.util.Random;
 
 import com.mojang.ld22.entity.AirWizard;
 import com.mojang.ld22.entity.Entity;
+import com.mojang.ld22.entity.Mario;
 import com.mojang.ld22.entity.Mob;
 import com.mojang.ld22.entity.Player;
 import com.mojang.ld22.entity.Slime;
@@ -113,8 +114,8 @@ public class Level {
 	public void renderBackground(Screen screen, int xScroll, int yScroll) {
 		int xo = xScroll >> 4;
 		int yo = yScroll >> 4;
-		int w = (screen.w + 15) >> 4;
-		int h = (screen.h + 15) >> 4;
+		int w = (screen.WIDTH + 15) >> 4;
+		int h = (screen.HEIGHT + 15) >> 4;
 		screen.setOffset(xScroll, yScroll);
 		for (int y = yo; y <= h + yo; y++) {
 			for (int x = xo; x <= w + xo; x++) {
@@ -131,8 +132,8 @@ public class Level {
 	public void renderSprites(Screen screen, int xScroll, int yScroll) {
 		int xo = xScroll >> 4;
 		int yo = yScroll >> 4;
-		int w = (screen.w + 15) >> 4;
-		int h = (screen.h + 15) >> 4;
+		int w = (screen.WIDTH + 15) >> 4;
+		int h = (screen.HEIGHT + 15) >> 4;
 
 		screen.setOffset(xScroll, yScroll);
 		for (int y = yo; y <= h + yo; y++) {
@@ -151,8 +152,8 @@ public class Level {
 	public void renderLight(Screen screen, int xScroll, int yScroll) {
 		int xo = xScroll >> 4;
 		int yo = yScroll >> 4;
-		int w = (screen.w + 15) >> 4;
-		int h = (screen.h + 15) >> 4;
+		int w = (screen.WIDTH + 15) >> 4;
+		int h = (screen.HEIGHT + 15) >> 4;
 
 		screen.setOffset(xScroll, yScroll);
 		int r = 4;
@@ -249,8 +250,12 @@ public class Level {
 			int lvl = random.nextInt(maxLevel - minLevel + 1) + minLevel;
 			if (random.nextInt(2) == 0)
 				mob = new Slime(lvl);
-			else
-				mob = new Zombie(lvl);
+                        else if (random.nextInt(2) == 0) {
+                                mob = new Zombie(lvl);
+                        } else {
+                                mob = new Mario(lvl);
+                        }
+                       
 
 			if (mob.findStartPos(this)) {
 				this.add(mob);

@@ -24,7 +24,7 @@ public class LevelTransitionMenu extends Menu {
 					if (dir > 0)
 						screen.render(x * 8, y * 8, 0, 0, 0);
 					else
-						screen.render(x * 8, screen.h - y * 8 - 8, 0, 0, 0);
+						screen.render(x * 8, screen.HEIGHT - y * 8 - 8, 0, 0, 0);
 				}
 			}
 		}

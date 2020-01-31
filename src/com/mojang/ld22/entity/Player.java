@@ -101,7 +101,7 @@ public class Player extends Mob {
 
 		if (input.attack.clicked) {
 			if (stamina == 0) {
-
+                            
 			} else {
 				stamina--;
 				staminaRecharge = 0;
