@@ -71,9 +71,6 @@ public class Mario extends Mob{
 			col = Color.get(-1, 555, 555, 555);
 		}
                 
-                
-                
-                
 		screen.render(xo + 8 * flip1, yo + 0, xt + yt * 32, col, flip1);
 		screen.render(xo + 8 - 8 * flip1, yo + 0, xt + 1 + yt * 32, col, flip1);
 		screen.render(xo + 8 * flip2, yo + 8, xt + (yt + 1) * 32, col, flip2);
