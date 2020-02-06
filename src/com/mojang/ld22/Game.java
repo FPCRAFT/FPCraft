@@ -50,6 +50,7 @@ public class Game extends Canvas implements Runnable {
 	private int currentLevel = 3;
 	public Player player;
 
+        
 	public Menu menu;
 	private int playerDeadTime;
 	private int pendingLevelChange;
