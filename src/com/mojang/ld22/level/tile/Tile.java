@@ -15,6 +15,7 @@ public class Tile {
 	protected Random random = new Random();
 
 	public static Tile[] tiles = new Tile[256];
+        
 	public static Tile grass = new GrassTile(0);
 	public static Tile rock = new RockTile(1);
 	public static Tile water = new WaterTile(2);
@@ -38,7 +39,8 @@ public class Tile {
 	public static Tile goldOre = new OreTile(20, Resource.goldOre);
 	public static Tile gemOre = new OreTile(21, Resource.gem);
 	public static Tile cloudCactus = new CloudCactusTile(22);
-
+        public static Tile obsidian = new ObsidianTile(23);
+        
 	public final byte id;
 
 	public boolean connectsToGrass = false;

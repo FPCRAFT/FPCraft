@@ -7,7 +7,9 @@ import com.mojang.ld22.entity.Player;
 import com.mojang.ld22.entity.particle.SmashParticle;
 import com.mojang.ld22.entity.particle.TextParticle;
 import com.mojang.ld22.gfx.Color;
+import com.mojang.ld22.gfx.HojaSprites;
 import com.mojang.ld22.gfx.Screen;
+import com.mojang.ld22.gfx.Sprite;
 import com.mojang.ld22.item.Item;
 import com.mojang.ld22.item.ResourceItem;
 import com.mojang.ld22.item.ToolItem;
@@ -16,6 +18,9 @@ import com.mojang.ld22.item.resource.Resource;
 import com.mojang.ld22.level.Level;
 
 public class HardRockTile extends Tile {
+    
+        protected Sprite sprite = new Sprite(8, 0, 0, HojaSprites.SHEET_1);
+    
 	public HardRockTile(int id) {
 		super(id);
 	}
@@ -36,34 +41,34 @@ public class HardRockTile extends Tile {
 
 		if (!u && !l) {
 			if (!ul)
-				screen.render(x * 16 + 0, y * 16 + 0, 0, col, 0);
+				screen.render(x * 16 + 0, y * 16 + 0, sprite, col);
 			else
-				screen.render(x * 16 + 0, y * 16 + 0, 7 + 0 * 32, transitionColor, 3);
+				screen.render(x * 16 + 0, y * 16 + 0, sprite, transitionColor);
 		} else
-			screen.render(x * 16 + 0, y * 16 + 0, (l ? 6 : 5) + (u ? 2 : 1) * 32, transitionColor, 3);
+			screen.render(x * 16 + 0, y * 16 + 0, sprite, transitionColor);
 
 		if (!u && !r) {
 			if (!ur)
 				screen.render(x * 16 + 8, y * 16 + 0, 1, col, 0);
 			else
-				screen.render(x * 16 + 8, y * 16 + 0, 8 + 0 * 32, transitionColor, 3);
+				screen.render(x * 16 + 8, y * 16 + 0, sprite, transitionColor);
 		} else
-			screen.render(x * 16 + 8, y * 16 + 0, (r ? 4 : 5) + (u ? 2 : 1) * 32, transitionColor, 3);
+			screen.render(x * 16 + 8, y * 16 + 0, sprite, transitionColor);
 
 		if (!d && !l) {
 			if (!dl)
-				screen.render(x * 16 + 0, y * 16 + 8, 2, col, 0);
+				screen.render(x * 16 + 0, y * 16 + 8, sprite, col);
 			else
-				screen.render(x * 16 + 0, y * 16 + 8, 7 + 1 * 32, transitionColor, 3);
+				screen.render(x * 16 + 0, y * 16 + 8, sprite, transitionColor);
 		} else
-			screen.render(x * 16 + 0, y * 16 + 8, (l ? 6 : 5) + (d ? 0 : 1) * 32, transitionColor, 3);
+			screen.render(x * 16 + 0, y * 16 + 8, sprite, transitionColor);
 		if (!d && !r) {
 			if (!dr)
-				screen.render(x * 16 + 8, y * 16 + 8, 3, col, 0);
+				screen.render(x * 16 + 8, y * 16 + 8, sprite, col);
 			else
-				screen.render(x * 16 + 8, y * 16 + 8, 8 + 1 * 32, transitionColor, 3);
+				screen.render(x * 16 + 8, y * 16 + 8, sprite, transitionColor);
 		} else
-			screen.render(x * 16 + 8, y * 16 + 8, (r ? 4 : 5) + (d ? 0 : 1) * 32, transitionColor, 3);
+			screen.render(x * 16 + 8, y * 16 + 8, sprite, transitionColor);
 	}
 
 	public boolean mayPass(Level level, int x, int y, Entity e) {

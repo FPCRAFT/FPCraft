@@ -30,8 +30,8 @@ public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private Random random = new Random();
 	public static final String NAME = "Minicraft";
-	public static final int HEIGHT = 120;
-	public static final int WIDTH = 160;
+	public static final int HEIGHT = 200;
+	public static final int WIDTH = 400;
 	private static final int SCALE = 3;
 
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -41,7 +41,7 @@ public class Game extends Canvas implements Runnable {
 	private Screen lightScreen;
 	private InputHandler input = new InputHandler(this);
 
-	private int[] colors = new int[256];
+	private Color colors = new Color();
 	private int tickCount = 0;
 	public int gameTime = 0;
 
@@ -97,23 +97,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	private void init() {
-		int pp = 0;
-		for (int r = 0; r < 6; r++) {
-			for (int g = 0; g < 6; g++) {
-				for (int b = 0; b < 6; b++) {
-					int rr = (r * 255 / 5);
-					int gg = (g * 255 / 5);
-					int bb = (b * 255 / 5);
-					int mid = (rr * 30 + gg * 59 + bb * 11) / 100;
-
-					int r1 = ((rr + mid * 1) / 2) * 230 / 255 + 10;
-					int g1 = ((gg + mid * 1) / 2) * 230 / 255 + 10;
-					int b1 = ((bb + mid * 1) / 2) * 230 / 255 + 10;
-					colors[pp++] = r1 << 16 | g1 << 8 | b1;
-
-				}
-			}
-		}
+		
 		try {
 			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet(ImageIO.read(Game.class.getResourceAsStream("/icons.png"))));
 			lightScreen = new Screen(WIDTH, HEIGHT, new SpriteSheet(ImageIO.read(Game.class.getResourceAsStream("/icons.png"))));
@@ -218,12 +202,12 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 
-		int xScroll = player.x - screen.w / 2;
-		int yScroll = player.y - (screen.h - 8) / 2;
+		int xScroll = player.x - screen.WIDTH / 2;
+		int yScroll = player.y - (screen.HEIGHT - 8) / 2;
 		if (xScroll < 16) xScroll = 16;
 		if (yScroll < 16) yScroll = 16;
-		if (xScroll > level.w * 16 - screen.w - 16) xScroll = level.w * 16 - screen.w - 16;
-		if (yScroll > level.h * 16 - screen.h - 16) yScroll = level.h * 16 - screen.h - 16;
+		if (xScroll > level.w * 16 - screen.WIDTH - 16) xScroll = level.w * 16 - screen.WIDTH - 16;
+		if (yScroll > level.h * 16 - screen.HEIGHT - 16) yScroll = level.h * 16 - screen.HEIGHT - 16;
 		if (currentLevel > 3) {
 			int col = Color.get(20, 20, 121, 121);
 			for (int y = 0; y < 14; y++)
@@ -245,10 +229,22 @@ public class Game extends Canvas implements Runnable {
 
 		if (!hasFocus()) renderFocusNagger();
 
-		for (int y = 0; y < screen.h; y++) {
-			for (int x = 0; x < screen.w; x++) {
-				int cc = screen.pixels[x + y * screen.w];
-				if (cc < 255) pixels[x + y * WIDTH] = colors[cc];
+		for (int y = 0; y < screen.HEIGHT; y++) {
+			for (int x = 0; x < screen.WIDTH; x++) {
+				
+				
+				//pixels[x + y * WIDTH] = screen.pixels[x + y * screen.WIDTH];
+				
+				int cc = screen.pixels[x + y * screen.WIDTH];
+				
+				if (cc < 255 && cc >= 0) {
+					pixels[x + y * WIDTH] = colors.getColor(cc);
+				}
+				else {
+					pixels[x + y * WIDTH] = screen.pixels[x + y * screen.WIDTH];
+				}
+						
+				
 			}
 		}
 
@@ -267,30 +263,30 @@ public class Game extends Canvas implements Runnable {
 	private void renderGui() {
 		for (int y = 0; y < 2; y++) {
 			for (int x = 0; x < 20; x++) {
-				screen.render(x * 8, screen.h - 16 + y * 8, 0 + 12 * 32, Color.get(000, 000, 000, 000), 0);
+				screen.render(x * 8, screen.HEIGHT - 16 + y * 8, 0 + 12 * 32, Color.get(000, 000, 000, 000), 0);
 			}
 		}
 
 		for (int i = 0; i < 10; i++) {
 			if (i < player.health)
-				screen.render(i * 8, screen.h - 16, 0 + 12 * 32, Color.get(000, 200, 500, 533), 0);
+				screen.render(i * 8, screen.HEIGHT - 16, 0 + 12 * 32, Color.get(000, 200, 500, 533), 0);
 			else
-				screen.render(i * 8, screen.h - 16, 0 + 12 * 32, Color.get(000, 100, 000, 000), 0);
+				screen.render(i * 8, screen.HEIGHT - 16, 0 + 12 * 32, Color.get(000, 100, 000, 000), 0);
 
 			if (player.staminaRechargeDelay > 0) {
 				if (player.staminaRechargeDelay / 4 % 2 == 0)
-					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, Color.get(000, 555, 000, 000), 0);
+					screen.render(i * 8, screen.HEIGHT - 8, 1 + 12 * 32, Color.get(000, 555, 000, 000), 0);
 				else
-					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, Color.get(000, 110, 000, 000), 0);
+					screen.render(i * 8, screen.HEIGHT - 8, 1 + 12 * 32, Color.get(000, 110, 000, 000), 0);
 			} else {
 				if (i < player.stamina)
-					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, Color.get(000, 220, 550, 553), 0);
+					screen.render(i * 8, screen.HEIGHT - 8, 1 + 12 * 32, Color.get(000, 220, 550, 553), 0);
 				else
-					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, Color.get(000, 110, 000, 000), 0);
+					screen.render(i * 8, screen.HEIGHT - 8, 1 + 12 * 32, Color.get(000, 110, 000, 000), 0);
 			}
 		}
 		if (player.activeItem != null) {
-			player.activeItem.renderInventory(screen, 10 * 8, screen.h - 16);
+			player.activeItem.renderInventory(screen, 10 * 8, screen.HEIGHT - 16);
 		}
 
 		if (menu != null) {

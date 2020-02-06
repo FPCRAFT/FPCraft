@@ -38,7 +38,7 @@ public class TitleMenu extends Menu {
 		int h = 2;
 		int w = 13;
 		int titleColor = Color.get(0, 010, 131, 551);
-		int xo = (screen.w - w * 8) / 2;
+		int xo = (screen.WIDTH - w * 8) / 2;
 		int yo = 24;
 		for (int y = 0; y < h; y++) {
 			for (int x = 0; x < w; x++) {
@@ -53,9 +53,9 @@ public class TitleMenu extends Menu {
 				msg = "> " + msg + " <";
 				col = Color.get(0, 555, 555, 555);
 			}
-			Font.draw(msg, screen, (screen.w - msg.length() * 8) / 2, (8 + i) * 8, col);
+			Font.draw(msg, screen, (screen.WIDTH - msg.length() * 8) / 2, (8 + i) * 8, col);
 		}
 
-		Font.draw("(Arrow keys,X and C)", screen, 0, screen.h - 8, Color.get(0, 111, 111, 111));
+		Font.draw("(Arrow keys,X and C)", screen, 0, screen.HEIGHT - 8, Color.get(0, 111, 111, 111));
 	}
 }
