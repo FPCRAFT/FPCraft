@@ -8,6 +8,7 @@ import java.util.Random;
 
 import com.mojang.ld22.entity.AirWizard;
 import com.mojang.ld22.entity.Entity;
+import com.mojang.ld22.entity.Mario;
 import com.mojang.ld22.entity.Mob;
 import com.mojang.ld22.entity.Player;
 import com.mojang.ld22.entity.Slime;
@@ -72,7 +73,9 @@ public class Level {
         tiles = maps[0];
         data = maps[1];
 
-        setExits(parentLevel);
+        if (parentLevel != null) {
+            setExits(parentLevel);
+        }
 
         entitiesInTiles = new ArrayList[w * h];
         for (int i = 0; i < w * h; i++) {
@@ -86,36 +89,34 @@ public class Level {
             add(aw);
         }
     }
-    
+
     protected void setExits(Level parentLevel) {
-        if (parentLevel != null) {
-            for (int y = 0; y < h; y++) {
-                for (int x = 0; x < w; x++) {
-                    if (parentLevel.getTile(x, y) == Tile.stairsDown) {
+        for (int y = 0; y < h; y++) {
+            for (int x = 0; x < w; x++) {
+                if (parentLevel.getTile(x, y) == Tile.stairsDown) {
 
-                        setTile(x, y, Tile.stairsUp, 0);
-                        if (depth == 0) {
-                            setTile(x - 1, y, Tile.hardRock, 0);
-                            setTile(x + 1, y, Tile.hardRock, 0);
-                            setTile(x, y - 1, Tile.hardRock, 0);
-                            setTile(x, y + 1, Tile.hardRock, 0);
-                            setTile(x - 1, y - 1, Tile.hardRock, 0);
-                            setTile(x - 1, y + 1, Tile.hardRock, 0);
-                            setTile(x + 1, y - 1, Tile.hardRock, 0);
-                            setTile(x + 1, y + 1, Tile.hardRock, 0);
-                        } else {
-                            setTile(x - 1, y, Tile.dirt, 0);
-                            setTile(x + 1, y, Tile.dirt, 0);
-                            setTile(x, y - 1, Tile.dirt, 0);
-                            setTile(x, y + 1, Tile.dirt, 0);
-                            setTile(x - 1, y - 1, Tile.dirt, 0);
-                            setTile(x - 1, y + 1, Tile.dirt, 0);
-                            setTile(x + 1, y - 1, Tile.dirt, 0);
-                            setTile(x + 1, y + 1, Tile.dirt, 0);
-                        }
+                    setTile(x, y, Tile.stairsUp, 0);
+                    if (depth == 0) {
+                        setTile(x - 1, y, Tile.hardRock, 0);
+                        setTile(x + 1, y, Tile.hardRock, 0);
+                        setTile(x, y - 1, Tile.hardRock, 0);
+                        setTile(x, y + 1, Tile.hardRock, 0);
+                        setTile(x - 1, y - 1, Tile.hardRock, 0);
+                        setTile(x - 1, y + 1, Tile.hardRock, 0);
+                        setTile(x + 1, y - 1, Tile.hardRock, 0);
+                        setTile(x + 1, y + 1, Tile.hardRock, 0);
+                    } else {
+                        setTile(x - 1, y, Tile.dirt, 0);
+                        setTile(x + 1, y, Tile.dirt, 0);
+                        setTile(x, y - 1, Tile.dirt, 0);
+                        setTile(x, y + 1, Tile.dirt, 0);
+                        setTile(x - 1, y - 1, Tile.dirt, 0);
+                        setTile(x - 1, y + 1, Tile.dirt, 0);
+                        setTile(x + 1, y - 1, Tile.dirt, 0);
+                        setTile(x + 1, y + 1, Tile.dirt, 0);
                     }
-
                 }
+
             }
         }
     }
@@ -278,8 +279,10 @@ public class Level {
             int lvl = random.nextInt(maxLevel - minLevel + 1) + minLevel;
             if (random.nextInt(2) == 0) {
                 mob = new Slime(lvl);
-            } else {
+            } else if (random.nextInt(2) == 0) {
                 mob = new Zombie(lvl);
+            } else {
+                mob = new Mario(lvl);
             }
 
             if (mob.findStartPos(this)) {

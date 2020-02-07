@@ -25,6 +25,8 @@ import com.mojang.ld22.screen.LevelTransitionMenu;
 import com.mojang.ld22.screen.Menu;
 import com.mojang.ld22.screen.TitleMenu;
 import com.mojang.ld22.screen.WonMenu;
+import java.io.BufferedReader;
+import java.io.File;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -99,8 +101,9 @@ public class Game extends Canvas implements Runnable {
 	private void init() {
 		
 		try {
-			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet(ImageIO.read(Game.class.getResourceAsStream("/icons.png"))));
-			lightScreen = new Screen(WIDTH, HEIGHT, new SpriteSheet(ImageIO.read(Game.class.getResourceAsStream("/icons.png"))));
+                    BufferedImage br = ImageIO.read(new File("/icons.png"));
+			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet(br));
+			lightScreen = new Screen(WIDTH, HEIGHT, new SpriteSheet(br));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
