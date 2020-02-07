@@ -95,4 +95,9 @@ public class MovingEntity extends Entity {
         screen.render(x - 4, y - 4 + 2, spritePack[dir], Color.get(-1, 100, 321, 431));
         
     }
+    
+    
+    public boolean canSwim() {
+        return true;
+    }
 }

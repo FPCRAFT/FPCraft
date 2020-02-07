@@ -15,7 +15,7 @@ public class HojaSprites {
 	/*
 	 * Declarar Aqui arriba las "hojas" o mas bien Imagenes que vayais a utilizar
 	 */
-	public static final HojaSprites SHEET_1 = new HojaSprites(HojaSprites.class.getResource("/icons.png").toString(), 256, 256);
+	public static final HojaSprites SHEET_1 = new HojaSprites("/icons.png", 256, 256);
 	
 	private final int WIDTH;
 	private final int HEIGHT;
